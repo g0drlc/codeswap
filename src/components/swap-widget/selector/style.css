@@ -1,0 +1,22 @@
+.tokenListContainer {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tokenListContainer::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.tokenListContainer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.tokenListContainer::-webkit-scrollbar-thumb {
+  background: #2a4964;
+  border-radius: 5px;
+  right: 10px;
+}
+
+.tokenListContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

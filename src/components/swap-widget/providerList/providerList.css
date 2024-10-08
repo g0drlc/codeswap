@@ -1,0 +1,22 @@
+.provider {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.provider::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.provider::-webkit-scrollbar {
+  width: 5px;
+}
+
+.provider::-webkit-scrollbar-thumb {
+  background: #2a4964;
+  border-radius: 5px;
+  right: 10px;
+}
+
+.provider::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

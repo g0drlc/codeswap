@@ -1,0 +1,1 @@
+export type WalletStatus = "balance" | "network" | "token" | "transaction";
