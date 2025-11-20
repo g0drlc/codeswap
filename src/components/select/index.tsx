@@ -23,7 +23,7 @@ const CustomSelect = ({ blockchain, token, handleClick }: SelectProps) => {
             alt={blockchain || ""}
           />
         </div>
-        <div className="z-10 bg-[#3f3f46] p-1 rounded-full -ml-4">
+        <div className="z-10 bg-white/80 dark:bg-zinc-700/80 backdrop-blur-sm p-1 rounded-full -ml-4 border-2 border-white/50 dark:border-zinc-600/50 shadow-md">
           <Image
             className="w-[35px] rounded-full"
             src={token?.image}
@@ -32,16 +32,17 @@ const CustomSelect = ({ blockchain, token, handleClick }: SelectProps) => {
         </div>
       </div>
       <div className="text-sm md:text-xl">
-        <p className="text-sm text-gray-50/40">{blockchain}</p>
-        <p>{token?.symbol}</p>
+        <p className="text-sm text-default-500 dark:text-default-400">{blockchain}</p>
+        <p className="font-bold text-foreground">{token?.symbol}</p>
       </div>
     </div>
   );
 
   return (
     <Button 
-      className="w-[350px] h-[70px] text-lg px-3" 
+      className="w-[350px] h-[70px] text-lg px-3 bg-gray-50 dark:bg-zinc-800/60 hover:bg-gray-100 dark:hover:bg-zinc-800/80 border border-gray-200 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-200" 
       onClick={() => handleClick(true)}
+      variant="flat"
     >
       <div className="flex justify-between items-center w-full">
         <div className="mr-1 w-full">

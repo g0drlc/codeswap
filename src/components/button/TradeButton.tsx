@@ -40,7 +40,7 @@ const TradeButton: React.FC<IProps> = ({ status, loading, onTradeClick }) => {
                 return (
                   <Button
                     radius="full"
-                    className="w-full bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+                    className="w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-xl hover:shadow-2xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 font-bold text-base"
                     onClick={openConnectModal}
                   >
                     Connect Wallet
@@ -50,7 +50,8 @@ const TradeButton: React.FC<IProps> = ({ status, loading, onTradeClick }) => {
               if (chain.unsupported) {
                 return (
                   <Button
-                    className="w-full rounded-lg bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+                    radius="full"
+                    className="w-full bg-gradient-to-r from-warning-500 to-warning-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 font-semibold"
                     onClick={openChainModal}
                   >
                     Wrong network
@@ -62,7 +63,8 @@ const TradeButton: React.FC<IProps> = ({ status, loading, onTradeClick }) => {
                 return (
                   <Button
                     radius="full"
-                    className="w-full bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+                    className="w-full bg-gradient-to-r from-default-400 to-default-500 text-white shadow-lg font-semibold disabled:opacity-50"
+                    isDisabled
                   >
                     { status === 'network' && "Connect Wallet" }
                     { status === 'token'&& "Select Token" }
@@ -73,14 +75,14 @@ const TradeButton: React.FC<IProps> = ({ status, loading, onTradeClick }) => {
               }
 
               return (
-                <Button
-                  radius="full"
-                  className="w-full bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
-                  onClick={onTradeClick}
-                  disabled={loading}
-                >
-                  {loading ? 'Calculating...':'Preview Swap'}
-                </Button>
+                  <Button
+                    radius="full"
+                    className="w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-xl hover:shadow-2xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 font-bold text-base disabled:opacity-70"
+                    onClick={onTradeClick}
+                    disabled={loading}
+                  >
+                    {loading ? 'Calculating...':'Preview Swap'}
+                  </Button>
               );
             })()}
           </div>

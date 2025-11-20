@@ -31,18 +31,25 @@ const socialItems = [
 
 export default function Footer() {
   return (
-    <footer className="mt-6 flex w-full flex-col">
+    <footer className="mt-12 flex w-full flex-col border-t border-gray-200 dark:border-white/10 bg-white/60 dark:bg-zinc-900/40 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-6 py-12 lg:px-8">
-        <div className="flex justify-center gap-x-4">
+        <div className="flex justify-center gap-x-6">
           {socialItems.map((item) => (
-            <Link key={item.name} isExternal className="text-default-400" href={item.href} target="_blank">
+            <Link 
+              key={item.name} 
+              isExternal 
+              className="text-default-500 hover:text-primary transition-colors duration-200" 
+              href={item.href} 
+              target="_blank"
+              aria-label={item.name}
+            >
               <span className="sr-only">{item.name}</span>
-              <item.icon aria-hidden="true" className="w-8 h-8" />
+              <item.icon aria-hidden="true" className="w-6 h-6 sm:w-8 sm:h-8" />
             </Link>
           ))}
         </div>
         <Spacer y={4} />
-        <p className="mt-1 text-center text-small text-default-400">
+        <p className="mt-1 text-center text-small text-default-500">
           All right reserved – copyright&copy;2024 – $CODE
         </p>
       </div>

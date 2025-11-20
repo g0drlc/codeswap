@@ -26,12 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true} className={`dark`}>
+    <html lang="en" suppressHydrationWarning={true}>
       <body
-        className={`${inter.className}`}
+        className={`${inter.className} antialiased`}
         suppressHydrationWarning={true}
       >
-        <div className="h-full">
+        <div className="h-full relative z-10">
           <Provider>
             {children}
           </Provider>

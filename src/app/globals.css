@@ -3,17 +3,81 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 15, 23, 42;
+  --background-start-rgb: 241, 245, 249;
+  --background-end-rgb: 226, 232, 240;
+  --accent-1: 139, 92, 246;
+  --accent-2: 59, 130, 246;
+  --accent-3: 236, 72, 153;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.dark {
+  --foreground-rgb: 250, 250, 250;
+  --background-start-rgb: 9, 9, 11;
+  --background-end-rgb: 17, 24, 39;
+  --accent-1: 139, 92, 246;
+  --accent-2: 59, 130, 246;
+  --accent-3: 236, 72, 153;
+}
+
+* {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background: 
+    linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%),
+    radial-gradient(circle at 0% 0%, rgba(var(--accent-1), 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(var(--accent-2), 0.08) 0%, transparent 50%);
+  min-height: 100vh;
+  position: relative;
+  transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 30%, rgba(var(--accent-1), 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(var(--accent-2), 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 50% 10%, rgba(var(--accent-3), 0.1) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+  animation: gradientShift 15s ease infinite;
+}
+
+html.dark body::before {
+  background: 
+    radial-gradient(circle at 15% 30%, rgba(var(--accent-1), 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(var(--accent-2), 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 10%, rgba(var(--accent-3), 0.12) 0%, transparent 40%);
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
   }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Smooth transitions for theme switching */
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 @layer utilities {

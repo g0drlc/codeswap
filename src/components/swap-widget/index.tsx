@@ -242,8 +242,8 @@ const SwapWidget: React.FC<IProps> = ({ tokens }) => {
             <div>
               <Card
                 isBlurred
-                className="h-auto w-[340px] md:w-[550px] border-none bg-background/60 dark:bg-default-100/50"
-                shadow="sm"
+                className="h-auto w-[340px] md:w-[550px] border border-gray-300 dark:border-white/10 bg-white/95 dark:bg-zinc-900/80 backdrop-blur-2xl shadow-2xl"
+                shadow="lg"
               >
                 <CardBody>
                   <div className="flex justify-between mb-2">
@@ -253,20 +253,31 @@ const SwapWidget: React.FC<IProps> = ({ tokens }) => {
                       </Tabs>
                     </div>
                     <div>
-                      <Button isIconOnly className="bg-transparent" aria-label="Like" onClick={refreshTrades}>
+                      <Button 
+                        isIconOnly 
+                        variant="light" 
+                        className="min-w-0 hover:bg-gray-100 dark:hover:bg-zinc-800/60 transition-all" 
+                        aria-label="Refresh" 
+                        onPress={refreshTrades}
+                      >
                         <Icon 
                           icon="solar:refresh-bold"
                           className={isCalculating ? "animate-spin" : ""}
                           fontSize={24} 
                         />
                       </Button>
-                      <Button isIconOnly className="bg-transparent" aria-label="Like">
+                      <Button 
+                        isIconOnly 
+                        variant="light" 
+                        className="min-w-0 hover:bg-gray-100 dark:hover:bg-zinc-800/60 transition-all" 
+                        aria-label="Settings"
+                      >
                         <Icon icon="icon-park:setting-config" fontSize={24} />
                       </Button>
                     </div>
                   </div>
                   <div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between gap-4">
                       <CustomSelect 
                         blockchain={sourceBlockchain}
                         token={sourceToken}
@@ -278,38 +289,45 @@ const SwapWidget: React.FC<IProps> = ({ tokens }) => {
                         labelPlacement="outside"
                         classNames={{
                           input: [
-                            "!text-zinc-300",
+                            "text-foreground",
                             "h-full",
                             "text-xl",
                             "text-right",
-                            "placeholder:text-zinc-400",
+                            "placeholder:text-default-500",
                             "border-none",
+                            "font-medium",
                           ],
                           inputWrapper: [
                             "h-[70px]",
-                            "shadow-xl",
-                            "rounded-md",
-                            "bg-transparent",
-                            "hover:!bg-transparent",
-                            "group-data-[focus=true]:bg-transparent",
-                            "group-data-[focus=true]:ring-none",
+                            "shadow-lg",
+                            "rounded-xl",
+                            "bg-gray-50 dark:bg-zinc-800/60",
+                            "backdrop-blur-sm",
+                            "hover:bg-gray-100 dark:hover:bg-zinc-800/80",
+                            "group-data-[focus=true]:bg-white dark:group-data-[focus=true]:bg-zinc-800/90",
+                            "group-data-[focus=true]:ring-2",
+                            "group-data-[focus=true]:ring-primary-500/50",
+                            "group-data-[focus=true]:shadow-xl",
                             "!cursor-text",
+                            "border border-gray-200 dark:border-white/10",
+                            "transition-all duration-200",
                           ],
                         }}
                         value={amount}
                         onChange={handleInputChange}
                       />
                     </div>
-                    <div className='bg-gradient-to-r from-default-100/50 via-50% via-zinc-400 to-default-100/50 flex justify-center my-6 h-[1px] items-center'>
+                    <div className='bg-gradient-to-r from-transparent via-gray-300 dark:via-white/10 to-transparent flex justify-center my-6 h-[1px] items-center relative'>
                       <Button 
                         isIconOnly
-                        className='rounded-full hover:!opacity-100'
+                        className='rounded-full bg-gradient-to-br from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-200 z-10 border-2 border-white/50 dark:border-white/20'
                         onClick={handleExchange}
+                        aria-label="Swap tokens"
                       >
                         <Icon className='text-lg text-white' icon="iconamoon:swap-light" />
                       </Button >
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between gap-4">
                       <CustomSelect 
                         blockchain={destBlockchain}
                         token={destToken}
@@ -321,20 +339,27 @@ const SwapWidget: React.FC<IProps> = ({ tokens }) => {
                         labelPlacement="outside"
                         classNames={{
                           input: [
-                            "!text-zinc-300",
+                            "text-foreground",
                             "h-full",
                             "text-xl",
                             "text-right",
-                            "placeholder:text-zinc-400",
+                            "placeholder:text-default-400 dark:placeholder:text-default-500",
+                            "font-semibold",
                           ],
                           inputWrapper: [
                             "h-[70px]",
-                            "shadow-xl",
-                            "rounded-md",
-                            "bg-transparent",
-                            "hover:!bg-transparent",
-                            "group-data-[focus=true]:bg-transparent",
+                            "shadow-lg",
+                            "rounded-xl",
+                            "bg-gray-50 dark:bg-zinc-800/60",
+                            "backdrop-blur-sm",
+                            "hover:bg-gray-100 dark:hover:bg-zinc-800/80",
+                            "group-data-[focus=true]:bg-white dark:group-data-[focus=true]:bg-zinc-800/90",
+                            "group-data-[focus=true]:ring-2",
+                            "group-data-[focus=true]:ring-primary-500/50",
+                            "group-data-[focus=true]:shadow-xl",
                             "!cursor-text",
+                            "border border-gray-200 dark:border-white/10",
+                            "transition-all duration-200",
                           ],
                         }}
                         disabled
@@ -367,10 +392,15 @@ const SwapWidget: React.FC<IProps> = ({ tokens }) => {
                     />
                     <Tooltip 
                       className="max-w-[250px]"
-                      content={`Enter your wallet address that supports ${destBlockchain || "ETH"}. You‘ll receive your tokens in this wallet.`}
+                      content={`Enter your wallet address that supports ${destBlockchain || "ETH"}. You'll receive your tokens in this wallet.`}
                       color="success"
                     >
-                      <Button className="min-w-0 p-4" onClick={() => setShowReceiver(!showReceiver)}>
+                      <Button 
+                        variant="flat"
+                        className="min-w-0 p-4 hover:bg-gray-100 dark:hover:bg-zinc-800/60 transition-all" 
+                        onPress={() => setShowReceiver(!showReceiver)}
+                        aria-label="Toggle receiver address"
+                      >
                         <Icon width={24} icon="hugeicons:wallet-done-01" />
                       </Button>
                     </Tooltip>
