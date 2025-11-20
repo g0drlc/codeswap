@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
         <Spacer y={4} />
         <p className="mt-1 text-center text-small text-default-500">
-          All right reserved – copyright&copy;2024 – $CODE
+          All right reserved – copyright&copy;2025 – CodeSwap
         </p>
       </div>
     </footer>

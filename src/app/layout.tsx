@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Code Swap",
-  description: "Cross-chain swap bridge",
+  title: "RubicSwap",
+  description: "Cross-chain swap bridge powered by Rubic aggregator",
   icons: {
     icon: [
       {

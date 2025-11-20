@@ -24,7 +24,7 @@ export default function Header() {
           <Image 
             className={`max-h-[60px] ${mounted && theme === 'light' ? 'brightness-0' : ''} transition-all duration-300`}
             src="/logo.png" 
-            alt="Code"
+            alt="RubicSwap"
           />
         </div>
       </NavbarBrand>
